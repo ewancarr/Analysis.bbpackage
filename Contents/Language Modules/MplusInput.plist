@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BBEditDocumentType</key>
+	<string>CodelessLanguageModule</string>
+	<key>BBLMColorsSyntax</key>
+	<true/>
+	<key>BBLMIsCaseSensitive</key>
+	<false/>
+	<key>BBLMKeywordList</key>
+	<array>
+		<string>DATA:</string>
+		<string>PLOT:</string>
+		<string>DEFINE:</string>
+		<string>TITLE:</string>
+		<string>ANALYSIS:</string>
+		<string>DATA IMPUTATION:</string>
+		<string>VARIABLE:</string>
+		<string>MODEL:</string>
+		<string>DATA WIDETOLONG:</string>
+		<string>DATA LONGTOWIDE:</string>
+		<string>DATA TWOPART:</string>
+		<string>DATA_MISSING:</string>
+		<string>DATA SURVIVAL:</string>
+		<string>DATA COHORT:</string>
+		<string>OUTPUT:</string>
+	</array>
+	<key>BBLMPredefinedNameList</key>
+	<array>
+		<string>TYPE IS</string>
+		<string>%WITHIN%</string>
+		<string>%BETWEEN%</string>
+		<string>variable</string>
+		<string>TYPE</string>
+		<string>processors</string>
+		<string>chain</string>
+		<string>thin</string>
+		<string>fbiter</string>
+		<string>ESTIMATOR</string>
+		<string>BY</string>
+		<string>ON</string>
+		<string>PON</string>
+		<string>WITH</string>
+		<string>PWITH</string>
+		<string>@</string>
+		<string>PON</string>
+		<string>$</string>
+		<string>XWITH</string>
+		<string>|</string>
+		<string>AT</string>
+		<string>$</string>
+		<string>cluster</string>
+		<string>usevariables</string>
+		<string>within</string>
+		<string>between</string>
+		<string>categorical</string>
+		<string>algorithm</string>
+	</array>
+	<key>BBLMLanguageCode</key>
+	<string>MPIN</string>
+	<key>BBLMLanguageDisplayName</key>
+	<string>Mplus Input</string>
+	<key>BBLMScansFunctions</key>
+	<true/>
+	<key>BBLMSuffixMap</key>
+	<array>
+		<dict>
+			<key>BBLMLanguageSuffix</key>
+			<string>.inp</string>
+		</dict>
+	</array>
+	<key>Language Features</key>
+	<dict>
+		<key>Comment Pattern</key>
+		<string>
+     (?x:
+     ((\!).*?$)    (?# Line/End of Line comments)
+     )
+     </string>
+		<key>String Pattern</key>
+		<string>
+       (?x:
+       (&quot;.*?&quot;|(`.*?&apos;))              (?# Double-quote)
+       )
+       </string>
+		<key>Close Block Comments</key>
+		<string>*/</string>
+		<key>Close Parameter Lists</key>
+		<string>)</string>
+		<key>Close Statement Blocks</key>
+		<string>}</string>
+		<key>Close Strings 1</key>
+		<string>&quot;</string>
+		<key>Close Strings 2</key>
+		<string>&apos;</string>
+		<key>End-of-line Ends Strings 1</key>
+		<string>;</string>
+		<key>End-of-line Ends Strings 2</key>
+		<string>///</string>
+		<key>Escape Char in Strings 1</key>
+		<string></string>
+		<key>Escape Char in Strings 2</key>
+		<string></string>
+		<key>Identifier and Keyword Characters</key>
+		<string>123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz.:%@$_|</string>
+		<key>Open Block Comments</key>
+		<string>/*</string>
+		<key>Open Line Comments</key>
+		<string>!</string>
+		<key>Open Parameter Lists</key>
+		<string>(</string>
+		<key>Open Statement Blocks</key>
+		<string>{</string>
+		<key>Open Strings 1</key>
+		<string>&quot;</string>
+		<key>Open Strings 2</key>
+		<string>`</string>
+		<key>Prefix for Functions</key>
+		<string></string>
+		<key>Prefix for Procedures</key>
+		<string></string>
+		<key>Terminator for Prototypes 1</key>
+		<string></string>
+		<key>Terminator for Prototypes 2</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

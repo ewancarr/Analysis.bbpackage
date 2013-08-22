@@ -13,7 +13,7 @@
 		<string>DATA:</string>
 		<string>PLOT:</string>
 		<string>DEFINE:</string>
-		<string>Title:</string>
+		<string>TITLE:</string>
 		<string>ANALYSIS:</string>
 		<string>DATA IMPUTATION:</string>
 		<string>VARIABLE:</string>
@@ -24,21 +24,19 @@
 		<string>DATA_MISSING:</string>
 		<string>DATA SURVIVAL:</string>
 		<string>DATA COHORT:</string>
-		<string></string>
-		<string></string>
+		<string>OUTPUT:</string>
 	</array>
 	<key>BBLMPredefinedNameList</key>
 	<array>
 		<string>TYPE IS</string>
 		<string>%WITHIN%</string>
 		<string>%BETWEEN%</string>
-		<string>LISTWISE</string>
 		<string>variable</string>
 		<string>TYPE</string>
-		<string>MISSING</string>
-		<string>RANDOM</string>
-		<string>TWOLEVEL</string>
-		<string>THREELEVEL</string>
+		<string>processors</string>
+		<string>chain</string>
+		<string>thin</string>
+		<string>fbiter</string>
 		<string>ESTIMATOR</string>
 		<string>BY</string>
 		<string>ON</string>
@@ -52,20 +50,21 @@
 		<string>|</string>
 		<string>AT</string>
 		<string>$</string>
-		<string>$</string>
+		<string>cluster</string>
+		<string>usevariables</string>
+		<string>within</string>
+		<string>between</string>
+		<string>categorical</string>
+		<string>algorithm</string>
 	</array>
 	<key>BBLMLanguageCode</key>
-	<string>MPLS</string>
+	<string>MPOU</string>
 	<key>BBLMLanguageDisplayName</key>
-	<string>Mplus</string>
+	<string>Mplus Output</string>
 	<key>BBLMScansFunctions</key>
 	<true/>
 	<key>BBLMSuffixMap</key>
 	<array>
-		<dict>
-			<key>BBLMLanguageSuffix</key>
-			<string>.inp</string>
-		</dict>
 		<dict>
 			<key>BBLMLanguageSuffix</key>
 			<string>.out</string>
