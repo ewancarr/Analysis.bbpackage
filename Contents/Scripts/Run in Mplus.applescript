@@ -51,9 +51,13 @@ end tell
 
 tell application "Terminal"
 	activate
+	tell application "System Events" to keystroke "t" using command down
+	repeat while contents of selected tab of window 1 starts with linefeed
+		delay 0.01
+	end repeat
 	set outputFile to basePath & nameWithoutExtension & ".out"
 	set theCommand to "/Applications/Mplus/mplus \"" & thePath & "\" \"" & outputFile & "\""
-	do script theCommand
+	do script theCommand in window 1
 end tell
 
 tell application "BBEdit"
@@ -61,6 +65,5 @@ tell application "BBEdit"
 	tell window 1
 		select insertion point before line (scrollPosition as integer)
 	end tell
-	
 end tell
 
