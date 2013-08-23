@@ -1,12 +1,17 @@
--- Run script.applescript
--- 2013-08-21 
--- ----------------------------------------------------------
--- Runs the frontmost file (or selection) in the appropriate 
--- application (R, Stata, or Mplus).
+(*
+Run frontmost TextWrangler document in R/Stata/Mplus
+Ewan Carr
 
--- TODO: 
--- * Make alerts prettier (e.g. take icon of respective app).
--- ==========================================================
+Version: 0.0.1
+Date: 23 Aug 2013
+
+This AppleScript is released under a Creative Commons Attribution-ShareAlike License:
+<http://creativecommons.org/licenses/by-sa/2.0/>
+
+
+TODO: 
+* Make alerts prettier (e.g. take icon of respective app).
+*)
 
 -- Subroutines
 
@@ -28,11 +33,10 @@ on isInstalled(appID)
 	end try
 end isInstalled
 
--- ============================================================
 
--- 1) Save the frontmost BBedit document; get the filename and path.
+-- 1) Save the frontmost TextWrangler document; get the filename and path.
 
-tell application "BBEdit"
+tell application "TextWrangler"
 	save text document 1
 	set fileName to name of text document 1
 	set filePath to file of text document 1 as string
@@ -53,7 +57,7 @@ if (fileName ends with ".r") then
 	
 	-- Run the file in R
 	
-	tell application "BBEdit"
+	tell application "TextWrangler"
 		set theSelection to the selection of window 1 of text document 1 as text
 		if theSelection is "" then
 			set theSelection to (get contents of front window as string)
@@ -78,7 +82,7 @@ else if (fileName ends with ".inp") then
 	
 	-- run script "~/Dropbox/Application Support/BBEdit/Scripts/Run in Mplus.applescript"
 	
-	tell application "BBEdit"
+	tell application "TextWrangler"
 		save text document 1
 		set theName to name of text document 1
 		set theFile to file of text document 1 as string
@@ -112,7 +116,7 @@ else if (fileName ends with ".inp") then
 		do script theCommand in window 1
 	end tell
 	
-	tell application "BBEdit"
+	tell application "TextWrangler"
 		open outputFile opening in front_window
 		tell window 1
 			select insertion point before line (scrollPosition as integer)
@@ -138,7 +142,7 @@ else if (fileName ends with ".do") then
 		return
 	else
 		--	run script "/Users/ewancarr/Dropbox/Application Support/BBEdit/Scripts/Run in Stata.applescript"
-		tell application "BBEdit"
+		tell application "TextWrangler"
 			set theSelection to ""
 			set theSelection to the selection of window 1 of text document 1 as text
 			set filePath to file of text document 1 as string
