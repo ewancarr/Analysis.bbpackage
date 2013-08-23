@@ -117,7 +117,7 @@ else if (fileName ends with ".inp") then
 	end tell
 	
 	tell application "BBEdit"
-		open outputFile opening in front_window
+		open outputFile opening in front_window with read only
 		tell window 1
 			select insertion point before line (scrollPosition as integer)
 		end tell
