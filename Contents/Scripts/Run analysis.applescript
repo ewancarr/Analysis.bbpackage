@@ -64,10 +64,10 @@ if (fileName ends with ".r") then
 		activate
 		cmd theSelection
 	end tell
-
--- Mplus input files (.inp) 
--- =====================================================
--- =====================================================
+	
+	-- Mplus input files (.inp) 
+	-- =====================================================
+	-- =====================================================
 	
 else if (fileName ends with ".inp") then
 	set appExists to isInstalled("meditor.MEditor")
@@ -75,8 +75,8 @@ else if (fileName ends with ".inp") then
 		display alert "Mplus is not installed."
 		return
 	end if
-
--- run script "~/Dropbox/Application Support/BBEdit/Scripts/Run in Mplus.applescript"
+	
+	-- run script "~/Dropbox/Application Support/BBEdit/Scripts/Run in Mplus.applescript"
 	
 	tell application "BBEdit"
 		save text document 1
@@ -98,7 +98,7 @@ else if (fileName ends with ".inp") then
 		set basePath to POSIX path of parentAlias
 	end tell
 	
-
+	
 	-- Run the input file using `mplus` in Terminal.app (in a new tab)
 	
 	tell application "Terminal"
@@ -118,33 +118,37 @@ else if (fileName ends with ".inp") then
 			select insertion point before line (scrollPosition as integer)
 		end tell
 	end tell
-
+	
 	
 else if (fileName ends with ".out") then
 	display dialog "Error: This is an output file"
 	
 	
--- Stata ".do" files
--- =====================================================
--- =====================================================
+	-- Stata ".do" files
+	-- =====================================================
+	-- =====================================================
 	
 else if (fileName ends with ".do") then
-	set appExists to isInstalled("com.stata.stata12")
+	set appExists to isInstalled("com.stata.stata12") -- Check if Stata 12 is installed
+	if (appExists = null) then
+		set appExists to isInstalled("com.stata.stata13") -- Check if Stata 13 is installed
+	end if
 	if (appExists = null) then
 		display alert "Stata is not installed."
 		return
 	else
 		--	run script "/Users/ewancarr/Dropbox/Application Support/BBEdit/Scripts/Run in Stata.applescript"
 		tell application "BBEdit"
+			set theSelection to ""
 			set theSelection to the selection of window 1 of text document 1 as text
 			set filePath to file of text document 1 as string
-			if theSelection is "" then -- If selection is empty, run whole document.
+			if (theSelection = "") then -- If selection is empty, run whole document.
 				tell application "StataSE"
 					activate
 					open filePath
 				end tell
 			else -- If selection is not empty, run just the selection
-				set theSelection to (get contents of front window as string)
+				set theSelection to (get the selection of window 1 of text document 1 as text)
 				set the clipboard to theSelection as text
 				do shell script "pbpaste > /tmp/stata.do"
 				do shell script "echo \"
