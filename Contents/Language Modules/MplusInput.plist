@@ -18,12 +18,12 @@
 		<string>DATA IMPUTATION:</string>
 		<string>VARIABLE:</string>
 		<string>MODEL:</string>
-		<string>DATA WIDETOLONG:</string>
-		<string>DATA LONGTOWIDE:</string>
-		<string>DATA TWOPART:</string>
-		<string>DATA_MISSING:</string>
-		<string>DATA SURVIVAL:</string>
-		<string>DATA COHORT:</string>
+		<string>WIDETOLONG:</string>
+		<string>LONGTOWIDE:</string>
+		<string>DATA</string>
+		<string>MISSING:</string>
+		<string>SURVIVAL:</string>
+		<string>COHORT:</string>
 		<string>OUTPUT:</string>
 	</array>
 	<key>BBLMPredefinedNameList</key>
