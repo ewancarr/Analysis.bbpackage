@@ -145,11 +145,13 @@ else if (fileName ends with ".do") then
 		tell application "BBEdit"
 			set theSelection to ""
 			set theSelection to the selection of window 1 of text document 1 as text
-			set filePath to file of text document 1 as string
+			set filePath to file of text document 1 as alias
 			if (theSelection = "") then -- If selection is empty, run whole document.
 				tell application "StataSE"
-					activate
-					open filePath
+					ignoring application responses
+						activate
+						open filePath
+					end ignoring
 				end tell
 			else -- If selection is not empty, run just the selection
 				set theSelection to (get the selection of window 1 of text document 1 as text)
@@ -160,8 +162,10 @@ else if (fileName ends with ".do") then
 			\" >> /tmp/stata.do"
 				
 				tell application "StataSE"
-					activate
-					open "/tmp/stata.do"
+					ignoring application responses
+						activate
+						open "/tmp/stata.do"
+					end ignoring
 				end tell
 				
 			end if
