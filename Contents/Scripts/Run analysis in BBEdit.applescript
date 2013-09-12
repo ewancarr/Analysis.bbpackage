@@ -6,7 +6,7 @@ Version: 0.0.1
 Date: 23 Aug 2013
 
 This AppleScript is released under a Creative Commons Attribution-ShareAlike License:
-<http://creativecommons.org/licenses/by-sa/2.0/>
+<http://creativecommons.org/licenses/by-sa/3.0/>
 
 
 TODO: 
@@ -114,6 +114,11 @@ else if (fileName ends with ".inp") then
 		set outputFile to basePath & nameWithoutExtension & ".out"
 		set theCommand to "/Applications/Mplus/mplus \"" & thePath & "\" \"" & outputFile & "\""
 		do script theCommand in window 1
+		set tabCount to count of tabs of window 1
+		if tabCount > 1 then -- Close other tabs, if any are open
+			tell application "System Events" to keystroke "w" using command down & option down
+		end if
+		
 	end tell
 	
 	tell application "BBEdit"
