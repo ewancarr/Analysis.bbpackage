@@ -20,4 +20,4 @@ Analysis.bbpackage
 
 	This runs the current BBEdit file in Mplus, R or Stata, depending on the file extension.
 
-	![](script.jpg)
+	![](https://raw.github.com/ewancarr/Analysis.bbpackage/master/script.jpg)
