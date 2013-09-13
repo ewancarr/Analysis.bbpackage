@@ -42,6 +42,12 @@ tell application "BBEdit"
 	set filePath to file of text document 1 as string
 end tell
 
+tell application "Finder"
+	set parentFolder to container of item filePath
+	set parentAlias to parentFolder as alias
+	set basePath to POSIX path of parentAlias
+end tell
+
 -- 2) Based on the file extension, run the approriate script
 
 -- R scripts
@@ -107,13 +113,30 @@ else if (fileName ends with ".inp") then
 	
 	tell application "Terminal"
 		activate
-		tell application "System Events" to keystroke "t" using command down
+		-- Check if a window already exists
+		try
+			set windowCount to (count of windows)
+		on error
+			set windowCount to 0
+		end try
+		
+		
+		if windowCount > 0 then -- If Terminal window exists, create a new tab
+			tell application "System Events" to keystroke "t" using command down
+		end if
+		if windowCount = 0 then -- If no window exists, open a new window
+			tell application "System Events" to keystroke "n" using command down
+		end if
+		
 		repeat while contents of selected tab of window 1 starts with linefeed
 			delay 0.01
 		end repeat
+		
 		set outputFile to basePath & nameWithoutExtension & ".out"
 		set theCommand to "/Applications/Mplus/mplus \"" & thePath & "\" \"" & outputFile & "\""
+		do script "cd \"" & basePath & "\"" in window 1
 		do script theCommand in window 1
+		
 		set tabCount to count of tabs of window 1
 		if tabCount > 1 then -- Close other tabs, if any are open
 			tell application "System Events" to keystroke "w" using command down & option down
