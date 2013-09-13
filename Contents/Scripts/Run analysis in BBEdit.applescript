@@ -2,8 +2,8 @@
 Run frontmost BBEdit document in R/Stata/Mplus
 Ewan Carr
 
-Version: 0.0.1
-Date: 23 Aug 2013
+Version: 0.0.2
+Date: 13 September 2013
 
 This AppleScript is released under a Creative Commons Attribution-ShareAlike License:
 <http://creativecommons.org/licenses/by-sa/3.0/>
