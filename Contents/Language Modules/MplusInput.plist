@@ -18,6 +18,7 @@
 		<string>IMPUTATION:</string>
 		<string>VARIABLE:</string>
 		<string>MODEL:</string>
+		<string>TEST:</string>
 		<string>WIDETOLONG:</string>
 		<string>LONGTOWIDE:</string>
 		<string>DATA</string>
@@ -34,6 +35,7 @@
 		<string>variable</string>
 		<string>TYPE</string>
 		<string>processors</string>
+		<string>integration</string>
 		<string>chain</string>
 		<string>thin</string>
 		<string>fbiter</string>
