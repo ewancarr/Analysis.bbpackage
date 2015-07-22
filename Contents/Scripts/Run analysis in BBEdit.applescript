@@ -2,6 +2,9 @@
 Run frontmost BBEdit document in R/Stata/Mplus
 Ewan Carr
 
+Version 0.0.3
+Date: 22 July 2015
+
 Version: 0.0.2
 Date: 13 September 2013
 
@@ -23,16 +26,13 @@ on theSplit(theString, theDelimiter)
 	return theArray
 end theSplit
 
-on isInstalled(appID)
+on isInstalled(app_name)
+	set isInstalled to null
 	try
-		tell application "Finder"
-			return name of application file id appID
-		end tell
-	on error err_msg number err_num
-		return null
+		set isInstalled to do shell script "ls /Applications/ | grep '" & app_name & "'"
 	end try
+	return isInstalled
 end isInstalled
-
 
 -- 1) Save the frontmost BBEdit document; get the filename and path.
 
@@ -55,7 +55,7 @@ end tell
 -- =====================================================
 
 if (fileName ends with ".r") then
-	set appExists to isInstalled("org.R-project.R")
+	set appExists to isInstalled("R.app")
 	if (appExists = null) then
 		display alert "R is not installed."
 		return
@@ -80,7 +80,7 @@ if (fileName ends with ".r") then
 	-- =====================================================
 	
 else if (fileName ends with ".inp") then
-	set appExists to isInstalled("meditor.MEditor")
+	set appExists to isInstalled("Mplus")
 	if (appExists = null) then
 		display alert "Mplus is not installed."
 		return
@@ -161,21 +161,18 @@ else if (fileName ends with ".out") then
 	-- =====================================================
 	
 else if (fileName ends with ".do") then
-	set appExists to isInstalled("com.stata.stata12") -- Check if Stata 12 is installed
-	if (appExists = null) then
-		set appExists to isInstalled("com.stata.stata13") -- Check if Stata 13 is installed
-	end if
+	set appExists to isInstalled("Stata")
 	if (appExists = null) then
 		display alert "Stata is not installed."
 		return
 	else
-		--	run script "/Users/ewancarr/Dropbox/Application Support/BBEdit/Scripts/Run in Stata.applescript"
+		set whichStata to do shell script "ls /Applications/Stata/ | grep '.app'"
 		tell application "BBEdit"
 			set theSelection to ""
 			set theSelection to the selection of window 1 of text document 1 as text
 			set filePath to file of text document 1 as alias
 			if (theSelection = "") then -- If selection is empty, run whole document.
-				tell application "StataSE"
+				tell application whichStata
 					ignoring application responses
 						activate
 						open filePath
@@ -189,7 +186,7 @@ else if (fileName ends with ".do") then
 	
 			\" >> /tmp/stata.do"
 				
-				tell application "StataSE"
+				tell application whichStata
 					ignoring application responses
 						activate
 						open "/tmp/stata.do"
